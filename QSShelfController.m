@@ -252,7 +252,9 @@ static int _moveRow = -1;
 }
 
 - (void)tableView:(NSTableView *)tv dropEndedWithOperation:(NSDragOperation)operation{
-    if (VERBOSE)NSLog(@"dropped withOp %d",operation);
+#ifdef DEBUG
+	NSLog(@"dropped withOp %d",operation);
+#endif
     
     if (operation==NSDragOperationDelete || operation==NSDragOperationMove){
         NSMutableArray *shelfArray=[[QSLibrarian sharedInstance]shelfNamed:@"General"];
