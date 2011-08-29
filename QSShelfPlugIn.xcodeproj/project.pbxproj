@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -214,8 +214,12 @@
 /* Begin PBXProject section */
 		0259C573FE90428111CA0C5A /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
 			buildConfigurationList = 7FFF250D085E488600266176 /* Build configuration list for PBXProject "QSShelfPlugIn" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -352,6 +356,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1477B12210D0E59C00B6698F /* QSPlugIn_Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
@@ -366,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1477B12410D0E59C00B6698F /* QSPlugIn_Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
@@ -380,6 +386,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1477B12010D0E59C00B6698F /* Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 			};
 			name = Debug;
 		};
@@ -387,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1477B12610D0E59C00B6698F /* Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 			};
 			name = Release;
 		};
