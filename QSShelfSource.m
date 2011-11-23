@@ -129,7 +129,7 @@
 }
 
 - (QSObject *) show:(QSObject *)dObject{
-    [(QSDockingWindow *)[[self controllerForShelf:[dObject objectForType:QSShelfPboardType]]window]toggle:self];
+    [(QSDockingWindow *)[[self controllerForShelf:[dObject objectForType:QSShelfPboardType]] window] toggle:self];
     return nil;
 }
 
