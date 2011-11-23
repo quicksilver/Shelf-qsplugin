@@ -24,9 +24,6 @@
 	[modMenuItem setTarget:self];
 	
 	NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-	if([defaults boolForKey:@"QSGeneralShelfIsVisible"]){
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showShelfHidden:) name:@"QSApplicationDidFinishLaunchingNotification" object:nil];
-	}	
 	NSImage *image=[NSImage imageNamed:@"Catalog"];
 	image=[image duplicateOfSize:QSSize16];
 	[modMenuItem setImage:image];
@@ -146,17 +143,6 @@
     //[[[QSShelfView alloc]initWithName:[[tabView tabViewItemAtIndex:i]identifier]]autorelease];
     }
 
-
-- (void)windowDidBecomeKey:(NSNotification *)aNotification{
-    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"QSGeneralShelfIsVisible"];   
-}
-- (void)windowWillClose:(NSNotification *)aNotification{
-}
-- (BOOL)windowShouldClose:(id)sender{
-    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"QSGeneralShelfIsVisible"];    
-
-	return YES;
-}
 - (void)windowDidLoad {
     
     [super windowDidLoad];
