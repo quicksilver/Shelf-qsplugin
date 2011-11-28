@@ -24,6 +24,11 @@
 	[modMenuItem setTarget:self];
 	
 	NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(saveVisibilityState:) name:@"QSEventNotification" object:nil];
+    if([defaults boolForKey:@"QSGeneralShelfIsVisible"]){
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showShelfHidden:) name:@"QSApplicationDidFinishLaunchingNotification" object:nil];
+    }  
 	NSImage *image=[NSImage imageNamed:@"Catalog"];
 	image=[image duplicateOfSize:QSSize16];
 	[modMenuItem setImage:image];
@@ -34,25 +39,23 @@
 	[(QSDockingWindow *)[[self sharedInstance]window]orderFrontHidden:sender];
 }
 
-
-
-+ (void)showClipboardHidden:(id)sender{
-	[(QSDockingWindow *)[[self sharedInstance]window]orderFrontHidden:sender];
-}
-
-
-
-
 + (id)sharedInstance{
     static id _sharedInstance;
     if (!_sharedInstance) _sharedInstance = [[[self class] allocWithZone:[self zone]] init];
     return _sharedInstance;
 }
 
+
 + (void)showShelf:(id)sender{
 	[(QSDockingWindow *)[[self sharedInstance]window]toggle:sender];
 }
 
+// saves the state of the shelf window when Quicksivler goes to quit (used on next QS launch - see +loadPlugIn)
++(void)saveVisibilityState:(NSNotification *)notif {
+    if ([[notif object] isEqualToString:@"QSQuicksilverWillQuitEvent"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:([(QSDockingWindow *)[[self sharedInstance] window] hidden] ? NO : YES) forKey:@"QSGeneralShelfIsVisible"];
+    }
+}
 
 - (id)init {
     self = [self initWithWindowNibName:@"QSShelf"];
