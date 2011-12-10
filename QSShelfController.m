@@ -210,7 +210,7 @@
 	
 }
 - (void)deleteBackward:(id)sender{
-    NSLog(@"delete");
+//    NSLog(@"delete");
     int index=[shelfTableView selectedRow];
 
     NSMutableArray *shelfArray=[[QSLibrarian sharedInstance]shelfNamed:@"General"];
