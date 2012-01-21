@@ -234,7 +234,7 @@
 static int _moveRow = -1;
 
 - (BOOL)tableView:(NSTableView *)tv writeRows:(NSArray*)rows toPasteboard:(NSPasteboard*)pboard{
-	NSLog(@"drag");
+	// NSLog(@"drag");
     _moveRow = [[rows objectAtIndex:0]intValue];
     [[[[QSLibrarian sharedInstance]shelfNamed:@"General"] objectAtIndex:_moveRow] putOnPasteboard:pboard];
     return YES;
