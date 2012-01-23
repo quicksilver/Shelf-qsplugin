@@ -15,10 +15,7 @@
 
 + (void)initialize {
 	[self loadPlugIn];
-}
-
-+ (void)loadPlugIn{
-	NSMenu *modulesMenu=[[[NSApp mainMenu]itemWithTag:128]submenu];
+    NSMenu *modulesMenu=[[[NSApp mainMenu]itemWithTag:128]submenu];
 	NSMenuItem *modMenuItem=[modulesMenu addItemWithTitle:@"Shelf" action:@selector(showShelf:) keyEquivalent:@"s"];
 	[modMenuItem setKeyEquivalentModifierMask:NSAlternateKeyMask|NSCommandKeyMask];
 	[modMenuItem setTarget:self];
@@ -32,7 +29,10 @@
 	NSImage *image=[NSImage imageNamed:@"Catalog"];
 	image=[image duplicateOfSize:QSSize16];
 	[modMenuItem setImage:image];
-	return ;	
+	return;	
+}
+
++ (void)loadPlugIn{
 }
 
 + (void)showShelfHidden:(id)sender{
