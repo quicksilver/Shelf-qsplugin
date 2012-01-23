@@ -15,33 +15,29 @@
 
 + (void)initialize {
 	[self loadPlugIn];
-}
-
-+ (void)loadPlugIn{
-	NSMenu *modulesMenu=[[[NSApp mainMenu]itemWithTag:128]submenu];
+    NSMenu *modulesMenu=[[[NSApp mainMenu]itemWithTag:128]submenu];
 	NSMenuItem *modMenuItem=[modulesMenu addItemWithTitle:@"Shelf" action:@selector(showShelf:) keyEquivalent:@"s"];
 	[modMenuItem setKeyEquivalentModifierMask:NSAlternateKeyMask|NSCommandKeyMask];
 	[modMenuItem setTarget:self];
 	
 	NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(saveVisibilityState:) name:@"QSEventNotification" object:nil];
+    if([defaults boolForKey:@"QSGeneralShelfIsVisible"]){
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showShelfHidden:) name:@"QSApplicationDidFinishLaunchingNotification" object:nil];
+    }  
 	NSImage *image=[NSImage imageNamed:@"Catalog"];
 	image=[image duplicateOfSize:QSSize16];
 	[modMenuItem setImage:image];
-	return ;	
+	return;	
+}
+
++ (void)loadPlugIn{
 }
 
 + (void)showShelfHidden:(id)sender{
 	[(QSDockingWindow *)[[self sharedInstance]window]orderFrontHidden:sender];
 }
-
-
-
-+ (void)showClipboardHidden:(id)sender{
-	[(QSDockingWindow *)[[self sharedInstance]window]orderFrontHidden:sender];
-}
-
-
-
 
 + (id)sharedInstance{
     static id _sharedInstance;
@@ -49,10 +45,17 @@
     return _sharedInstance;
 }
 
+
 + (void)showShelf:(id)sender{
 	[(QSDockingWindow *)[[self sharedInstance]window]toggle:sender];
 }
 
+// saves the state of the shelf window when Quicksivler goes to quit (used on next QS launch - see +loadPlugIn)
++(void)saveVisibilityState:(NSNotification *)notif {
+    if ([[notif object] isEqualToString:@"QSQuicksilverWillQuitEvent"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:([(QSDockingWindow *)[[self sharedInstance] window] hidden] ? NO : YES) forKey:@"QSGeneralShelfIsVisible"];
+    }
+}
 
 - (id)init {
     self = [self initWithWindowNibName:@"QSShelf"];
@@ -207,7 +210,7 @@
 	
 }
 - (void)deleteBackward:(id)sender{
-    NSLog(@"delete");
+//    NSLog(@"delete");
     int index=[shelfTableView selectedRow];
 
     NSMutableArray *shelfArray=[[QSLibrarian sharedInstance]shelfNamed:@"General"];
@@ -231,7 +234,7 @@
 static int _moveRow = -1;
 
 - (BOOL)tableView:(NSTableView *)tv writeRows:(NSArray*)rows toPasteboard:(NSPasteboard*)pboard{
-	NSLog(@"drag");
+	// NSLog(@"drag");
     _moveRow = [[rows objectAtIndex:0]intValue];
     [[[[QSLibrarian sharedInstance]shelfNamed:@"General"] objectAtIndex:_moveRow] putOnPasteboard:pboard];
     return YES;
