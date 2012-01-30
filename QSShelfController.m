@@ -36,7 +36,7 @@
 }
 
 + (void)showShelfHidden:(id)sender{
-	[(QSDockingWindow *)[[self sharedInstance]window]orderFrontHidden:sender];
+	[(QSDockingWindow *)[[self sharedInstance] window]orderFrontHidden:sender];
 }
 
 + (id)sharedInstance{
@@ -53,7 +53,11 @@
 // saves the state of the shelf window when Quicksivler goes to quit (used on next QS launch - see +loadPlugIn)
 +(void)saveVisibilityState:(NSNotification *)notif {
     if ([[notif object] isEqualToString:@"QSQuicksilverWillQuitEvent"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:([(QSDockingWindow *)[[self sharedInstance] window] hidden] ? NO : YES) forKey:@"QSGeneralShelfIsVisible"];
+        BOOL visible = ![(QSDockingWindow *)[[self sharedInstance] window] hidden];
+        if (!visible) {
+            visible = [(QSDockingWindow *)[[self sharedInstance] window] canFade];
+        }
+        [[NSUserDefaults standardUserDefaults] setBool:visible forKey:@"QSGeneralShelfIsVisible"];
     }
 }
 
