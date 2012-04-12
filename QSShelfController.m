@@ -23,7 +23,7 @@
 	NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(saveVisibilityState:) name:@"QSEventNotification" object:nil];
-    if([defaults boolForKey:@"QSGeneralShelfIsVisible"]){
+    if([defaults boolForKey:@"QSGeneralShelfIsVisible"] && ![(QSDockingWindow *)[[self sharedInstance] window] canFade]) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showShelfHidden:) name:@"QSApplicationDidFinishLaunchingNotification" object:nil];
     }  
 	NSImage *image=[NSImage imageNamed:@"Catalog"];
@@ -54,9 +54,6 @@
 +(void)saveVisibilityState:(NSNotification *)notif {
     if ([[notif object] isEqualToString:@"QSQuicksilverWillQuitEvent"]) {
         BOOL visible = ![(QSDockingWindow *)[[self sharedInstance] window] hidden];
-        if (!visible) {
-            visible = [(QSDockingWindow *)[[self sharedInstance] window] canFade];
-        }
         [[NSUserDefaults standardUserDefaults] setBool:visible forKey:@"QSGeneralShelfIsVisible"];
     }
 }
