@@ -12,6 +12,8 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>Shelf Module</string>
+	<key>CFBundleDisplayName</key>
+	<string>Shelf</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
