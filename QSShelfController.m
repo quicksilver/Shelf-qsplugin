@@ -20,12 +20,9 @@
 	[modMenuItem setKeyEquivalentModifierMask:NSAlternateKeyMask|NSCommandKeyMask];
 	[modMenuItem setTarget:self];
 	
-	NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(saveVisibilityState:) name:@"QSEventNotification" object:nil];
-    if([defaults boolForKey:@"QSGeneralShelfIsVisible"] || [(QSDockingWindow *)[[self sharedInstance] window] canFade]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showShelfHidden:) name:@"QSApplicationDidFinishLaunchingNotification" object:nil];
-    }  
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showShelfHidden:) name:@"QSApplicationDidFinishLaunchingNotification" object:nil];
 	NSImage *image=[NSImage imageNamed:@"Catalog"];
 	image=[image duplicateOfSize:QSSize16];
 	[modMenuItem setImage:image];
@@ -35,8 +32,12 @@
 + (void)loadPlugIn{
 }
 
-+ (void)showShelfHidden:(id)sender{
-	[(QSDockingWindow *)[[self sharedInstance] window]orderFrontHidden:sender];
++ (void)showShelfHidden:(id)sender
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	if ([defaults boolForKey:@"QSGeneralShelfIsVisible"] || [(QSDockingWindow *)[[self sharedInstance] window] canFade]) {
+		[(QSDockingWindow *)[[self sharedInstance] window]orderFrontHidden:sender];
+	}
 }
 
 + (id)sharedInstance{
