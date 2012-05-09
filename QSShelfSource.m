@@ -134,8 +134,12 @@
 }
 
 - (QSObject *) putObjectOnShelf:(QSObject *)dObject{
-	dObject = (QSObject*)[dObject resolvedObject];
-    [[QSShelfController sharedInstance] addObject:dObject atIndex:0];   
+    if (dObject != nil) {
+        dObject = (QSObject*)[dObject resolvedObject];
+        [[QSShelfController sharedInstance] addObject:dObject atIndex:0];   
+    } else {
+        NSBeep();
+    }
     return nil;
 }
 

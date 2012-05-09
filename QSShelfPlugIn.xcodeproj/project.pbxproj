@@ -250,15 +250,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1477B12210D0E59C00B6698F /* QSPlugIn_Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SYSTEM_APPS_DIR)/Quicksilver.app/Contents/Frameworks\"";
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Shelf Module";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -266,15 +259,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1477B12410D0E59C00B6698F /* QSPlugIn_Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SYSTEM_APPS_DIR)/Quicksilver.app/Contents/Frameworks\"";
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Shelf Module";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -282,8 +268,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1477B12010D0E59C00B6698F /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Debug;
 		};
@@ -291,8 +275,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1477B12610D0E59C00B6698F /* Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Release;
 		};

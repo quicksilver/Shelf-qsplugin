@@ -170,11 +170,11 @@
 }
 
 
-- (BOOL)addObject:(QSObject *)object atIndex:(int)index{
+- (BOOL)addObject:(QSObject *)object atIndex:(NSUInteger)index{
     NSMutableArray *shelfArray=[[QSLibrarian sharedInstance]shelfNamed:@"General"];
     [shelfArray insertObject:object atIndex:index];
     [shelfTableView reloadData];
-    [shelfTableView selectRow:index byExtendingSelection:NO];
+    [shelfTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
     if ([[self window]isVisible])[(QSDockingWindow *)[self window]show:self];
     [[QSLibrarian sharedInstance]saveShelf:@"General"];
 	return YES;
@@ -183,11 +183,11 @@
 
 //Outline Methods
 
-- (int)numberOfRowsInTableView:(NSTableView *)tableView{
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
     return [[QSLib shelfNamed:@"General"]count];
 }
 
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex{
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
     if ([[aTableColumn identifier]isEqualToString:@"Name"]){
         NSString *source=[[[[QSLibrarian sharedInstance]shelfNamed:@"General"] objectAtIndex:rowIndex]displayName];
         if (!source)source=@"Unknown";
@@ -198,7 +198,7 @@
 
 
 
-- (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex{
+- (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
         if ([[aTableColumn identifier]isEqualToString:@"Name"]){
             [aCell setRepresentedObject:[[QSLib shelfNamed:@"General"] objectAtIndex:rowIndex]];
             [aCell setState:NSOffState];
@@ -213,7 +213,7 @@
 }
 - (void)deleteBackward:(id)sender{
 //    NSLog(@"delete");
-    int index=[shelfTableView selectedRow];
+    NSInteger index=[shelfTableView selectedRow];
 
     NSMutableArray *shelfArray=[[QSLibrarian sharedInstance]shelfNamed:@"General"];
     if (index>=0) [shelfArray removeObjectAtIndex:index];
@@ -223,7 +223,7 @@
     [shelfTableView reloadData];
 }
 
-- (BOOL)tableView:(NSTableView *)tv didDepositRow:(int)rowToMove at:(int)newPosition{
+- (BOOL)tableView:(NSTableView *)tv didDepositRow:(NSInteger)rowToMove at:(NSInteger)newPosition{
    // NSLog(@"accept drag");
     NSMutableArray *shelfArray=[[QSLibrarian sharedInstance]shelfNamed:@"General"];
     [shelfArray insertObject:[shelfArray objectAtIndex:rowToMove] atIndex:newPosition];
@@ -233,7 +233,7 @@
 
 
 
-static int _moveRow = -1;
+static NSInteger _moveRow = -1;
 
 - (BOOL)tableView:(NSTableView *)tv writeRows:(NSArray*)rows toPasteboard:(NSPasteboard*)pboard{
 	// NSLog(@"drag");
@@ -257,7 +257,7 @@ static int _moveRow = -1;
     }
 }
 
-- (BOOL)tableView:(NSTableView*)tableView acceptDrop:(id <NSDraggingInfo>)info row:(int)row dropOperation:(NSTableViewDropOperation)operation{
+- (BOOL)tableView:(NSTableView*)tableView acceptDrop:(id <NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)operation{
     
     if ([info draggingSource]!=tableView){
         id theObject=nil;
@@ -284,14 +284,14 @@ static int _moveRow = -1;
 }
 
 - (void)copy:(id)sender{
-      int index=[shelfTableView selectedRow];
+      NSInteger index=[shelfTableView selectedRow];
     [[[[QSLibrarian sharedInstance]shelfNamed:@"General"] objectAtIndex:index] putOnPasteboard:[NSPasteboard generalPasteboard] includeDataForTypes:nil];
 }
 
 - (IBAction)tableDoubleAction:(id)sender{
     id selectedObject=[[QSLib shelfNamed:@"General"] objectAtIndex:[shelfTableView selectedRow]];
     QSAction *action=[[QSExec rankedActionsForDirectObject:selectedObject indirectObject:nil]objectAtIndex:0];
-    int argumentCount=[(QSAction *)action argumentCount];
+    NSInteger argumentCount=[(QSAction *)action argumentCount];
      
    // if (VERBOSE) NSLog(@"double %@ %@",selectedObject, action);
     if (argumentCount==2)
@@ -303,12 +303,12 @@ static int _moveRow = -1;
 // ***warning   * if ambiguous this should ask which action to use
 }
 
-- (NSMenu *)tableView:(NSTableView*)tableView menuForTableColumn:(NSTableColumn *)column row:(int)row{
+- (NSMenu *)tableView:(NSTableView*)tableView menuForTableColumn:(NSTableColumn *)column row:(NSInteger)row{
     [tableView selectRow:row byExtendingSelection:NO];
     //NSLog(@"menu");
     return [[column dataCell] menuForObject:[[QSLib shelfNamed:@"General"] objectAtIndex:row]];
 }
-- (NSDragOperation)tableView:(NSTableView*)tableView validateDrop:(id <NSDraggingInfo>)info proposedRow:(int)row proposedDropOperation:(NSTableViewDropOperation)operation{
+- (NSDragOperation)tableView:(NSTableView*)tableView validateDrop:(id <NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)operation{
 //      NSLog(@"validate %@",[info draggingSource]);
     if (operation==NSTableViewDropAbove)
         return NSDragOperationEvery;
