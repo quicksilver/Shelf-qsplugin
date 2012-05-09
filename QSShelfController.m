@@ -35,7 +35,7 @@
 + (void)showShelfHidden:(id)sender
 {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	if ([defaults boolForKey:@"QSGeneralShelfIsVisible"] || [(QSDockingWindow *)[[self sharedInstance] window] canFade]) {
+	if ([defaults boolForKey:@"QSGeneralShelfIsVisible"] || [(QSDockingWindow *)[[self sharedInstance] window] isDocked]) {
 		[(QSDockingWindow *)[[self sharedInstance] window]orderFrontHidden:sender];
 	}
 }
