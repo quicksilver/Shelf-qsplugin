@@ -12,12 +12,14 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>Shelf Module</string>
+	<key>CFBundleDisplayName</key>
+	<string>Shelf</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.2</string>
+	<string>1.2.3</string>
 	<key>CFBundleVersion</key>
-	<string>75</string>
+	<string>76</string>
 	<key>NSPrincipalClass</key>
 	<string>QSShelfController</string>
 	<key>QSActions</key>
@@ -105,6 +107,11 @@
 			<key>General</key>
 			<string>QSShelfController</string>
 		</dict>
+	</dict>
+	<key>QSRequirements</key>
+	<dict>
+		<key>version</key>
+		<string>3926</string>
 	</dict>
 </dict>
 </plist>
