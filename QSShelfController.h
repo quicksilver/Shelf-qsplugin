@@ -11,5 +11,5 @@
 
 + (id)sharedInstance;
 
-- (BOOL)addObject:(QSObject *)object atIndex:(int)index;
+- (BOOL)addObject:(QSObject *)object atIndex:(NSUInteger)index;
 @end
