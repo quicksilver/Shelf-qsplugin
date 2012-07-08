@@ -248,7 +248,7 @@
 			baseConfigurationReference = D4FD145115A92815007522C3 /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-bundle";
-				PRODUCT_NAME = "Shelf Module";
+				PRODUCT_NAME = "Shelf Plugin";
 			};
 			name = Debug;
 		};
@@ -257,7 +257,7 @@
 			baseConfigurationReference = D4FD145115A92815007522C3 /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-bundle";
-				PRODUCT_NAME = "Shelf Module";
+				PRODUCT_NAME = "Shelf Plugin";
 			};
 			name = Release;
 		};
