@@ -1,6 +1,5 @@
 /* QSShelfController */
 
-#import <Cocoa/Cocoa.h>
 @class QSObject;
 @interface QSShelfController : NSWindowController{
     IBOutlet NSTabView *tabView;

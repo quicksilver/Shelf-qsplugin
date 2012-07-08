@@ -3,8 +3,6 @@
 #import "QSShelfSource.h"
 
 #import "QSShelfController.h"
-//#import "QSPasteboardController.h"
-#import <QSCore/QSLibrarian.h>
 #define QSShelfPboardType @"qs.shelf"
 
 #define kQSShelfShowAction @"QSShelfShowAction"

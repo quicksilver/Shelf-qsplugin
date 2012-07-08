@@ -1,13 +1,4 @@
 #import "QSShelfController.h"
-#import <QSFoundation/QSFoundation.h>
-#import <QSCore/QSObject_Pasteboard.h>
-#import <QSCore/QSLibrarian.h>
-#import <QSCore/QSExecutor.h>
-#import <QSInterface/QSDockingWindow.h>
-#import <QSInterface/QSObjectView.h> 
-#import <QSInterface/QSObjectCell.h>
-#import <QSInterface/QSInterfaceController.h>
-#import <QSCore/QSInterfaceMediator.h>
 
 
 
