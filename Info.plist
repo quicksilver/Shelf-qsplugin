@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.4</string>
+	<string>1.3.0</string>
 	<key>CFBundleVersion</key>
-	<string>77</string>
+	<string>78</string>
 	<key>NSPrincipalClass</key>
 	<string>QSShelfController</string>
 	<key>QSActions</key>
@@ -68,7 +68,7 @@
 			<string>Quicksilver</string>
 		</array>
 		<key>description</key>
-		<string>Provides a shelf for temporary storage</string>
+		<string>Provides a shelf for permanent storage of objects</string>
 		<key>icon</key>
 		<string>Catalog</string>
 		<key>qsversion</key>
@@ -78,11 +78,40 @@
 	<array>
 		<dict>
 			<key>ID</key>
-			<string>QSPresetShelves</string>
+			<string>QSPresetShelfGroup</string>
 			<key>catalogPath</key>
 			<string>QSPresetQSGroup</string>
+			<key>icon</key>
+			<string>Catalog</string>
+			<key>name</key>
+			<string>Shelf &amp; Clipboard</string>
 			<key>source</key>
-			<string>QSShelfSource</string>
+			<string>QSGroupObjectSource</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetShelves</string>
+					<key>source</key>
+					<string>QSShelfSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetShelfContents</string>
+					<key>source</key>
+					<string>QSShelfSource</string>
+					<key>name</key>
+					<string>Shelf Contents</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetClipboardContents</string>
+					<key>source</key>
+					<string>QSShelfSource</string>
+					<key>name</key>
+					<string>Clipboard Contents</string>
+				</dict>
+			</array>
 		</dict>
 	</array>
 	<key>QSRegistration</key>

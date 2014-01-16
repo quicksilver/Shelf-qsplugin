@@ -61,7 +61,6 @@
 			children = (
 				D4FD144D15A92815007522C3 /* Configuration */,
 				32DBCF9E0370C38000C91783 /* Classes */,
-				32DBCF9F0370C38200C91783 /* Other Sources */,
 				0259C582FE90428111CA0C5A /* Resources */,
 				1ED78706FE9D4A0611CA0C5A /* Products */,
 				2E58F364FFB232C311CA0CBA /* Frameworks */,
@@ -109,13 +108,6 @@
 				7F4625DB080B593900E8EAFC /* QSShelfSource.m */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		32DBCF9F0370C38200C91783 /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		7FC20C8107FB741700FDD3CA /* Other Frameworks */ = {
