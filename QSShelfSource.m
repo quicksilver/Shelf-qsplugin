@@ -4,8 +4,7 @@
 
 #import "QSShelfController.h"
 #define QSShelfPboardType @"qs.shelf"
-#define kQSShelfAndClipboardID @"QSPresetShelves"
-#define kQSShelfContentsID @"QSPresetShelfContents"
+
 #define kQSClipboardContentsID @"QSPresetClipboardContents"
 
 #define kQSShelfShowAction @"QSShelfShowAction"

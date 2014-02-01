@@ -167,7 +167,8 @@
     [shelfTableView reloadData];
     [shelfTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
     if ([[self window]isVisible])[(QSDockingWindow *)[self window]show:self];
-    [[QSLibrarian sharedInstance]saveShelf:@"General"];
+    [[QSLibrarian sharedInstance] saveShelf:@"General"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryInvalidated object:kQSShelfContentsID];
 	return YES;
 }
 
@@ -175,7 +176,7 @@
 //Outline Methods
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-    return [[QSLib shelfNamed:@"General"]count];
+    return [[QSLib shelfNamed:@"General"] count];
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
@@ -204,14 +205,20 @@
 }
 - (void)deleteBackward:(id)sender{
 //    NSLog(@"delete");
-    NSInteger index=[shelfTableView selectedRow];
+    NSInteger index= [shelfTableView selectedRow];
+    [self removeFromShelf:index];
+}
 
-    NSMutableArray *shelfArray=[[QSLibrarian sharedInstance]shelfNamed:@"General"];
-    if (index>=0) [shelfArray removeObjectAtIndex:index];
-
-    [[QSLibrarian sharedInstance]saveShelf:@"General"];
-
+- (void)removeFromShelf:(NSInteger)shelfRow {
+    NSMutableArray *shelfArray = [[QSLibrarian sharedInstance]shelfNamed:@"General"];
+    if (shelfRow >=0 ) {
+        [shelfArray removeObjectAtIndex:shelfRow];
+    }
+    
+    [[QSLibrarian sharedInstance] saveShelf:@"General"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryInvalidated object:kQSShelfContentsID];
     [shelfTableView reloadData];
+
 }
 
 - (BOOL)tableView:(NSTableView *)tv didDepositRow:(NSInteger)rowToMove at:(NSInteger)newPosition{
