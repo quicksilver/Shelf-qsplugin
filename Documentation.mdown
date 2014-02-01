@@ -1,4 +1,4 @@
-##Shelf Plugin
+#Shelf Plugin
 
 **Note:** the Shelf Plugin must be installed in order for the Clipboard plugin to work correctly.
 
@@ -11,7 +11,7 @@ Some examples of items you put on the shelf might be:
 * A folder you commonly use
 * URLs, making the shelf an alternative to your browser's bookmarks folder (which is usable across browsers)
 
-### Showing the Shelf
+## Showing the Shelf
 
 There are several ways in which you can show/activate the shelf:
 
@@ -19,7 +19,7 @@ There are several ways in which you can show/activate the shelf:
 2. From Quicksilver, selecting 'Shelf' in the 1st pane, and 'Show' as the action. This is useful for creating a trigger
 3. If the Shelf is docked at the side of your screen, hover your mouse over it. For more info, see the 'Docked or Floating' section below.
 
-### Docked or Floating
+## Docked or Floating
 
 The Shelf (and Clipboard) windows are called 'Docking windows' in Quicksilver terminology. They can either be moved to float anywhere on your screen, or docked to the edge of the screen (similar to how the Dock itself behaves when you turn on Dock hiding).
 
@@ -27,33 +27,34 @@ Where you place your Shelf window is up to you. If your Shelf is floating, then 
 
 If you dock your window, you can also show the window by hovering the mouse over the portion of the screen where your shelf is docked. This can be useful for dragging items onto the shelf, or for manipulating the shelf solely with the mouse.
 
-### Actions
+## Actions
 
-* **Put on Shelf**:
-    
-    This is a shortcut for adding items to your shelf. See 'Adding items to the shelf' below.
+Put on Shelf
+
+  : This is a shortcut for adding items to your shelf. See 'Adding items to the shelf' below.
     
 ### Catalog
 
 The Shelf plugin adds 3 items to your [catalog](qs://preferences#QSCatalogPrefPane) (in one group), under the 'Quicksilver' tab.
 
-* **Shelf & Clipboard**:
+Shelf & Clipboard
     
-    This entry adds the two 'shelf' and 'clipboard' items to your catalog, allowing you to manipulate them from the Quicksilver interface (e.g. Show, Search Contents) etc.
+  : This entry adds the two 'shelf' and 'clipboard' items to your catalog, allowing you to manipulate them from the Quicksilver interface (e.g. Show, Search Contents) etc.
     
-* **Shelf Contents**:
+Shelf Contents
     
-    Enable this item if you want the entire contents of your shelf to be available in Quicksilver's 1st and 3rd panes. That is - allowing you to manipulate an item on the shelf from Quicksilver
-* **Clipboard Contents**:
+  : Enable this item if you want the entire contents of your shelf to be available in Quicksilver's 1st and 3rd panes. That is - allowing you to manipulate an item on the shelf from Quicksilver
+  
+Clipboard Contents
 
-    Enable this item if you want the contents of your clipboard available in Quicksilver, much like the 'Shelf Contents' entry
+  : Enable this item if you want the contents of your clipboard available in Quicksilver, much like the 'Shelf Contents' entry
 
-### Adding items to the Shelf
+## Adding items to the Shelf
 
 There are two ways to add items to your shelf. One is to use the 'Put on Shelf' action from Quicksilver; select an item in Quicksilver's 1st pane, and use the 'Put on Shelf' action.
 The other is to drag and drop an item from Quicksilver's 1st (or 3rd) pane straight onto the shelf.
 
-### Using items on the Shelf
+## Using items on the Shelf
 
 You can use items on the shelf in several different ways
 
@@ -67,4 +68,4 @@ You can use items on the shelf in several different ways
     
 * Enabling the 'Shelf Contents' Catalog entry (see 'Catalog' above) means you can use the the items on your shelf from anywhere in Quicksilver (search for them in the 1st pane, or use them in actions in the 3rd pane)
 
-* Finally, you can remove items from your shelf by highlighting them, and pressing the backspace (⌫) key
+* Finally, you can remove items from your shelf by highlighting them, and pressing the delete (⌫) key
