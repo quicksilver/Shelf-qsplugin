@@ -302,7 +302,7 @@ static NSInteger _moveRow = -1;
 }
 
 - (NSMenu *)tableView:(NSTableView*)tableView menuForTableColumn:(NSTableColumn *)column row:(NSInteger)row{
-    [tableView selectRow:row byExtendingSelection:NO];
+    [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     //NSLog(@"menu");
     return [[column dataCell] menuForObject:[[QSLib shelfNamed:@"General"] objectAtIndex:row]];
 }
