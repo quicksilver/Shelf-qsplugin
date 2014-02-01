@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.3.0</string>
 	<key>CFBundleVersion</key>
-	<string>7A</string>
+	<string>7C</string>
 	<key>NSPrincipalClass</key>
 	<string>QSShelfController</string>
 	<key>QSActions</key>
@@ -162,6 +162,8 @@ The other is to drag and drop an item from Quicksilver's 1st (or 3rd) pane strai
 				<dict>
 					<key>ID</key>
 					<string>QSPresetShelfContents</string>
+					<key>enabled</key>
+					<false/>
 					<key>name</key>
 					<string>Shelf Contents</string>
 					<key>source</key>
@@ -170,6 +172,8 @@ The other is to drag and drop an item from Quicksilver's 1st (or 3rd) pane strai
 				<dict>
 					<key>ID</key>
 					<string>QSPresetClipboardContents</string>
+					<key>enabled</key>
+					<false/>
 					<key>name</key>
 					<string>Clipboard Contents</string>
 					<key>source</key>
