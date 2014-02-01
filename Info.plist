@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.3.0</string>
 	<key>CFBundleVersion</key>
-	<string>7C</string>
+	<string>7D</string>
 	<key>NSPrincipalClass</key>
 	<string>QSShelfController</string>
 	<key>QSActions</key>
@@ -143,6 +143,8 @@ The other is to drag and drop an item from Quicksilver's 1st (or 3rd) pane strai
 		<string>Catalog</string>
 		<key>qsversion</key>
 		<string>2A5F</string>
+		<key>recommended</key>
+		<true/>
 	</dict>
 	<key>QSPresetAdditions</key>
 	<array>
