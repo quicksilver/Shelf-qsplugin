@@ -5,6 +5,8 @@
 #import "QSShelfController.h"
 #define QSShelfPboardType @"qs.shelf"
 
+#define kQSClipboardContentsID @"QSPresetClipboardContents"
+
 #define kQSShelfShowAction @"QSShelfShowAction"
 #define kQSPutOnShelfAction @"QSPutOnShelfAction"
 
@@ -18,20 +20,27 @@
     return [QSResourceManager imageNamed:@"prefsCatalog"];
 }
 - (NSArray *) objectsForEntry:(NSDictionary *)theEntry{
-   NSDictionary *nameDict=[NSDictionary dictionaryWithObjectsAndKeys:
-        @"Shelf",@"General",
-         @"Clipboard History",@"QSPasteboardHistory",
-        nil];
+    if ([[theEntry  objectForKey:kItemID] isEqualToString:kQSShelfContentsID]) {
+        return [QSLib shelfNamed:@"General"];
+    } else if ([[theEntry objectForKey:kItemID] isEqualToString:kQSClipboardContentsID]) {
+        return [QSLib shelfNamed:@"QSPasteboardHistory"];
+    }
     
-    NSMutableArray *objects=[NSMutableArray arrayWithCapacity:1];
+    
+    NSDictionary *nameDict=[NSDictionary dictionaryWithObjectsAndKeys:
+                            @"Shelf",@"General",
+                            @"Clipboard History",@"QSPasteboardHistory",
+                            nil];
+    
+    NSMutableArray *objects=[NSMutableArray array];
     QSObject *newObject;
     NSString *name;
     NSString *key;
     NSEnumerator *objectEnumerator=[[QSLib shelfArrays]keyEnumerator];
-   
+    
     while(key=[objectEnumerator nextObject]){
         name=[nameDict objectForKey:key];
-
+        
         newObject=[QSObject objectWithName:name];
         [newObject setObject:key forType:QSShelfPboardType];
         [newObject setPrimaryType:QSShelfPboardType];

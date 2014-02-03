@@ -1,5 +1,8 @@
 /* QSShelfController */
 
+#define kQSShelfAndClipboardID @"QSPresetShelves"
+#define kQSShelfContentsID @"QSPresetShelfContents"
+
 @class QSObject;
 @interface QSShelfController : NSWindowController{
     IBOutlet NSTabView *tabView;
