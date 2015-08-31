@@ -216,7 +216,7 @@ The other is to drag and drop an item from Quicksilver's 1st (or 3rd) pane strai
 	<key>QSRequirements</key>
 	<dict>
 		<key>version</key>
-		<string>4001</string>
+		<string>4012</string>
 	</dict>
 </dict>
 </plist>

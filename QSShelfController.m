@@ -168,7 +168,7 @@
     [shelfTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
     if ([[self window]isVisible])[(QSDockingWindow *)[self window]show:self];
     [[QSLibrarian sharedInstance] saveShelf:@"General"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryInvalidated object:kQSShelfContentsID];
+    [[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryInvalidatedNotification object:kQSShelfContentsID];
 	return YES;
 }
 
@@ -216,7 +216,7 @@
     }
     
     [[QSLibrarian sharedInstance] saveShelf:@"General"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryInvalidated object:kQSShelfContentsID];
+    [[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryInvalidatedNotification object:kQSShelfContentsID];
     [shelfTableView reloadData];
 
 }
