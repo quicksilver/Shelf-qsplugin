@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.1</string>
+	<string>1.4.0</string>
 	<key>CFBundleVersion</key>
-	<string>7E</string>
+	<string>7F</string>
 	<key>NSPrincipalClass</key>
 	<string>QSShelfController</string>
 	<key>QSActions</key>
