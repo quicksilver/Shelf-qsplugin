@@ -8,7 +8,7 @@
 	[self loadPlugIn];
     NSMenu *modulesMenu=[[[NSApp mainMenu]itemWithTag:128]submenu];
 	NSMenuItem *modMenuItem=[modulesMenu addItemWithTitle:@"Shelf" action:@selector(showShelf:) keyEquivalent:@"s"];
-	[modMenuItem setKeyEquivalentModifierMask:NSAlternateKeyMask|NSCommandKeyMask];
+	[modMenuItem setKeyEquivalentModifierMask:NSEventModifierFlagOption|NSEventModifierFlagCommand];
 	[modMenuItem setTarget:self];
 	
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -27,7 +27,9 @@
 {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	if ([defaults boolForKey:@"QSGeneralShelfIsVisible"] || [(QSDockingWindow *)[[self sharedInstance] window] isDocked]) {
-		[(QSDockingWindow *)[[self sharedInstance] window]orderFrontHidden:sender];
+		QSGCDMainSync(^{
+			[(QSDockingWindow *)[[self sharedInstance] window]orderFrontHidden:sender];
+		});
 	}
 }
 
@@ -39,14 +41,18 @@
 
 
 + (void)showShelf:(id)sender{
-	[(QSDockingWindow *)[[self sharedInstance]window]toggle:sender];
+	QSGCDMainSync(^{
+		[(QSDockingWindow *)[[self sharedInstance]window] toggle:sender];
+	});
 }
 
 // saves the state of the shelf window when Quicksivler goes to quit (used on next QS launch - see +loadPlugIn)
 +(void)saveVisibilityState:(NSNotification *)notif {
     if ([[notif object] isEqualToString:@"QSQuicksilverWillQuitEvent"]) {
-        BOOL visible = ![(QSDockingWindow *)[[self sharedInstance] window] hidden];
-        [[NSUserDefaults standardUserDefaults] setBool:visible forKey:@"QSGeneralShelfIsVisible"];
+		QSGCDMainSync(^{
+			BOOL visible = ![(QSDockingWindow *)[[self sharedInstance] window] hidden];
+			[[NSUserDefaults standardUserDefaults] setBool:visible forKey:@"QSGeneralShelfIsVisible"];
+		});
     }
 }
 
@@ -162,11 +168,13 @@
 
 
 - (BOOL)addObject:(QSObject *)object atIndex:(NSUInteger)index{
-    NSMutableArray *shelfArray=[[QSLibrarian sharedInstance]shelfNamed:@"General"];
+    NSMutableArray *shelfArray = [[QSLibrarian sharedInstance] shelfNamed:@"General"];
     [shelfArray insertObject:object atIndex:index];
     [shelfTableView reloadData];
     [shelfTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
-    if ([[self window]isVisible])[(QSDockingWindow *)[self window]show:self];
+	if ([[self window] isVisible]) {
+		[(QSDockingWindow *)[self window] show:self];
+	}
     [[QSLibrarian sharedInstance] saveShelf:@"General"];
     [[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryInvalidatedNotification object:kQSShelfContentsID];
 	return YES;
