@@ -41,7 +41,7 @@
 
 + (void)showShelf:(id)sender{
 	QSGCDMainSync(^{
-		[(QSDockingWindow *)[[self sharedInstance]window] toggle:sender];
+		[(QSDockingWindow *)[[self sharedInstance] window] toggle:sender];
 	});
 }
 
@@ -206,6 +206,19 @@
 
 - (void)keyDown:(NSEvent *)theEvent{
 	//NSLog(@"KeyD: %@",[theEvent characters]);
+	if ([[theEvent charactersIgnoringModifiers] isEqualToString:@"\r"]) {
+		NSUInteger modFlags = [theEvent modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask;
+		if (modFlags == 0) {
+			[self tableDoubleAction:theEvent];
+			[(QSDockingWindow *)[self window] hide:theEvent];
+			return;
+		}
+		if (modFlags == NSEventModifierFlagCommand)   {
+			[self openInInterface:theEvent];
+			[(QSDockingWindow *)[self window] hide:theEvent];
+			return;
+		}
+	}
 	[self interpretKeyEvents:[NSArray arrayWithObject:theEvent]];
 
 	
@@ -308,7 +321,11 @@ static NSInteger _moveRow = -1;
 // ***warning   * if ambiguous this should ask which action to use
 }
 
-- (void)openInInterface:(id)sender {
+- (IBAction)executeObject:(id)sender {
+	[self tableDoubleAction:sender];
+}
+
+- (IBAction)openInInterface:(id)sender {
 	QSInterfaceController *interface = [QSReg preferredCommandInterface];
 	[interface selectObject:[[QSLib shelfNamed:@"General"] objectAtIndex:[shelfTableView selectedRow]]];
 	 [interface actionActivate:sender];

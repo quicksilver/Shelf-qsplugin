@@ -58,14 +58,16 @@ The other is to drag and drop an item from Quicksilver's 1st (or 3rd) pane strai
 
 You can use items on the shelf in several different ways
 
-* Double clicking a shelf item (or pressing return ↩ on a selected item) will cause Quicksilver to use the default action for that item.
-    For example, if you have some text on your Shelf, and in Quicksilver the default action for text is to "Large Type", then when double clicking a text item from your shelf it will be shown in Large Type. Alter your default actions in the [actions preferences]() to alter this behaviour.
+* **Executing Actions**: Double-clicking a shelf item (or pressing return ↩ on a selected item) will cause Quicksilver to use the default action for that item.
+    For example: if your default action for text is "Large Type", when you double click a text item from your shelf it will be shown in Large Type. Alter your default actions in the [actions preferences](qs://preferences#QSActionsPrefPane) to alter this behavior.
     
-* Dragging an item from the Shelf to an application. This will use the item in whatever way the receiving action sees fit. For example;
+* **Dragging items**: You can drag an item from the Shelf to an application. This will use the item in whatever way the receiving action sees fit. For example;
     * Dragging a text item from your shelf to TextEdit will make TextEdit paste the item
     * Dragging a URL from your shelf to Finder will make Finder create a file for that URL
     * If you drag a file from your shelf to Finder, Finder will move that file
-    
-* Enabling the 'Shelf Contents' Catalog entry (see 'Catalog' above) means you can use the the items on your shelf from anywhere in Quicksilver (search for them in the 1st pane, or use them in actions in the 3rd pane)
 
-* Finally, you can remove items from your shelf by highlighting them, and pressing the delete (⌫) key
+* **Removing Items**: you can remove items from your shelf by highlighting them, and pressing the delete (⌫) key, or by right clicking an item and choosing the 'Remove' option.
+
+* **Opening an item in Quicksilver**: You can open an item in Quicksilver by right clicking and choosing the 'Open in Quicksilver' action, or by using the keyboard shortcut ⌘↩. This is useful if you want to execute a different command on the item on your shelf, or if you want to edit the shelf item.
+    
+* **Using Shelf Items Directly within Quicksilver**: Enabling the 'Shelf Contents' Catalog entry (see 'Catalog' above) means you can use the the items on your shelf from anywhere in Quicksilver (search for them in the 1st pane, or use them in actions in the 3rd pane)
