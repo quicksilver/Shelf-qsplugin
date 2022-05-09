@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.2</string>
+	<string>1.4.3</string>
 	<key>CFBundleVersion</key>
 	<string>83</string>
 	<key>NSPrincipalClass</key>
@@ -76,57 +76,57 @@
 		<key>extendedDescription</key>
 		<string>&lt;h1&gt;Shelf Plugin&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; the Shelf Plugin must be installed in order for the Clipboard plugin to work correctly.&lt;/p&gt;
-&lt;p&gt;The shelf plugin adds a 'Shelf' for permanent storage of any Quicksilver item, which is persistent across relaunches. You can add any item to the Shelf, and retrieve it at any time.&lt;/p&gt;
+&lt;p&gt;The shelf plugin adds a &apos;Shelf&apos; for permanent storage of any Quicksilver item, which is persistent across relaunches. You can add any item to the Shelf, and retrieve it at any time.&lt;/p&gt;
 &lt;p&gt;Some examples of items you put on the shelf might be:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Text you commonly type (like an email signature or boilerplate HTML code)&lt;/li&gt;
-&lt;li&gt;Your best friend's email address&lt;/li&gt;
+&lt;li&gt;Your best friend&apos;s email address&lt;/li&gt;
 &lt;li&gt;A folder you commonly use&lt;/li&gt;
-&lt;li&gt;URLs, making the shelf an alternative to your browser's bookmarks folder (which is usable across browsers)&lt;/li&gt;
+&lt;li&gt;URLs, making the shelf an alternative to your browser&apos;s bookmarks folder (which is usable across browsers)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Showing the Shelf&lt;/h2&gt;
 &lt;p&gt;There are several ways in which you can show/activate the shelf:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Activate Quicksilver, and use the shortcut ⌘⌥S. This will automatically show or hide the shelf, depending on its current state.&lt;/li&gt;
-&lt;li&gt;From Quicksilver, selecting 'Shelf' in the 1st pane, and 'Show' as the action. This is useful for creating a trigger&lt;/li&gt;
-&lt;li&gt;If the Shelf is docked at the side of your screen, hover your mouse over it. For more info, see the 'Docked or Floating' section below.&lt;/li&gt;
+&lt;li&gt;From Quicksilver, selecting &apos;Shelf&apos; in the 1st pane, and &apos;Show&apos; as the action. This is useful for creating a trigger&lt;/li&gt;
+&lt;li&gt;If the Shelf is docked at the side of your screen, hover your mouse over it. For more info, see the &apos;Docked or Floating&apos; section below.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;Docked or Floating&lt;/h2&gt;
-&lt;p&gt;The Shelf (and Clipboard) windows are called 'Docking windows' in Quicksilver terminology. They can either be moved to float anywhere on your screen, or docked to the edge of the screen (similar to how the Dock itself behaves when you turn on Dock hiding).&lt;/p&gt;
-&lt;p&gt;Where you place your Shelf window is up to you. If your Shelf is floating, then after use it will fade into the background. You can use options 1 and 2 in the 'Showing the Shelf' list above to open it.&lt;/p&gt;
+&lt;p&gt;The Shelf (and Clipboard) windows are called &apos;Docking windows&apos; in Quicksilver terminology. They can either be moved to float anywhere on your screen, or docked to the edge of the screen (similar to how the Dock itself behaves when you turn on Dock hiding).&lt;/p&gt;
+&lt;p&gt;Where you place your Shelf window is up to you. If your Shelf is floating, then after use it will fade into the background. You can use options 1 and 2 in the &apos;Showing the Shelf&apos; list above to open it.&lt;/p&gt;
 &lt;p&gt;If you dock your window, you can also show the window by hovering the mouse over the portion of the screen where your shelf is docked. This can be useful for dragging items onto the shelf, or for manipulating the shelf solely with the mouse.&lt;/p&gt;
 &lt;h2&gt;Actions&lt;/h2&gt;
 &lt;dl&gt;
 &lt;dt&gt;Put on Shelf&lt;/dt&gt;
 &lt;dd&gt;
-&lt;p&gt;This is a shortcut for adding items to your shelf. See 'Adding items to the shelf' below.&lt;/p&gt;
+&lt;p&gt;This is a shortcut for adding items to your shelf. See &apos;Adding items to the shelf&apos; below.&lt;/p&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
 &lt;h3&gt;Catalog&lt;/h3&gt;
-&lt;p&gt;The Shelf plugin adds 3 items to your &lt;a href="qs://preferences#QSCatalogPrefPane"&gt;catalog&lt;/a&gt; (in one group), under the 'Quicksilver' tab.&lt;/p&gt;
+&lt;p&gt;The Shelf plugin adds 3 items to your &lt;a href=&quot;qs://preferences#QSCatalogPrefPane&quot;&gt;catalog&lt;/a&gt; (in one group), under the &apos;Quicksilver&apos; tab.&lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;Shelf &amp;amp; Clipboard&lt;/dt&gt;
 &lt;dd&gt;
-&lt;p&gt;This entry adds the two 'shelf' and 'clipboard' items to your catalog, allowing you to manipulate them from the Quicksilver interface (e.g. Show, Search Contents) etc.&lt;/p&gt;
+&lt;p&gt;This entry adds the two &apos;shelf&apos; and &apos;clipboard&apos; items to your catalog, allowing you to manipulate them from the Quicksilver interface (e.g. Show, Search Contents) etc.&lt;/p&gt;
 &lt;/dd&gt;
 &lt;dt&gt;Shelf Contents&lt;/dt&gt;
 &lt;dd&gt;
-&lt;p&gt;Enable this item if you want the entire contents of your shelf to be available in Quicksilver's 1st and 3rd panes. That is - allowing you to manipulate an item on the shelf from Quicksilver&lt;/p&gt;
+&lt;p&gt;Enable this item if you want the entire contents of your shelf to be available in Quicksilver&apos;s 1st and 3rd panes. That is - allowing you to manipulate an item on the shelf from Quicksilver&lt;/p&gt;
 &lt;/dd&gt;
 &lt;dt&gt;Clipboard Contents&lt;/dt&gt;
 &lt;dd&gt;
-&lt;p&gt;Enable this item if you want the contents of your clipboard available in Quicksilver, much like the 'Shelf Contents' entry&lt;/p&gt;
+&lt;p&gt;Enable this item if you want the contents of your clipboard available in Quicksilver, much like the &apos;Shelf Contents&apos; entry&lt;/p&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
 &lt;h2&gt;Adding items to the Shelf&lt;/h2&gt;
-&lt;p&gt;There are two ways to add items to your shelf. One is to use the 'Put on Shelf' action from Quicksilver; select an item in Quicksilver's 1st pane, and use the 'Put on Shelf' action.
-The other is to drag and drop an item from Quicksilver's 1st (or 3rd) pane straight onto the shelf.&lt;/p&gt;
+&lt;p&gt;There are two ways to add items to your shelf. One is to use the &apos;Put on Shelf&apos; action from Quicksilver; select an item in Quicksilver&apos;s 1st pane, and use the &apos;Put on Shelf&apos; action.
+The other is to drag and drop an item from Quicksilver&apos;s 1st (or 3rd) pane straight onto the shelf.&lt;/p&gt;
 &lt;h2&gt;Using items on the Shelf&lt;/h2&gt;
 &lt;p&gt;You can use items on the shelf in several different ways&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Executing Actions&lt;/strong&gt;: Double-clicking a shelf item (or pressing return ↩ on a selected item) will cause Quicksilver to use the default action for that item.
-    For example: if your default action for text is "Large Type", when you double click a text item from your shelf it will be shown in Large Type. Alter your default actions in the &lt;a href="qs://preferences#QSActionsPrefPane"&gt;actions preferences&lt;/a&gt; to alter this behavior.&lt;/p&gt;
+    For example: if your default action for text is &quot;Large Type&quot;, when you double click a text item from your shelf it will be shown in Large Type. Alter your default actions in the &lt;a href=&quot;qs://preferences#QSActionsPrefPane&quot;&gt;actions preferences&lt;/a&gt; to alter this behavior.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Dragging items&lt;/strong&gt;: You can drag an item from the Shelf to an application. This will use the item in whatever way the receiving action sees fit. For example;&lt;/p&gt;
@@ -137,13 +137,13 @@ The other is to drag and drop an item from Quicksilver's 1st (or 3rd) pane strai
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Removing Items&lt;/strong&gt;: you can remove items from your shelf by highlighting them, and pressing the delete (⌫) key, or by right clicking an item and choosing the 'Remove' option.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Removing Items&lt;/strong&gt;: you can remove items from your shelf by highlighting them, and pressing the delete (⌫) key, or by right clicking an item and choosing the &apos;Remove&apos; option.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Opening an item in Quicksilver&lt;/strong&gt;: You can open an item in Quicksilver by right clicking and choosing the 'Open in Quicksilver' action, or by using the keyboard shortcut ⌘↩. This is useful if you want to execute a different command on the item on your shelf, or if you want to edit the shelf item.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Opening an item in Quicksilver&lt;/strong&gt;: You can open an item in Quicksilver by right clicking and choosing the &apos;Open in Quicksilver&apos; action, or by using the keyboard shortcut ⌘↩. This is useful if you want to execute a different command on the item on your shelf, or if you want to edit the shelf item.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Using Shelf Items Directly within Quicksilver&lt;/strong&gt;: Enabling the 'Shelf Contents' Catalog entry (see 'Catalog' above) means you can use the the items on your shelf from anywhere in Quicksilver (search for them in the 1st pane, or use them in actions in the 3rd pane)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Using Shelf Items Directly within Quicksilver&lt;/strong&gt;: Enabling the &apos;Shelf Contents&apos; Catalog entry (see &apos;Catalog&apos; above) means you can use the the items on your shelf from anywhere in Quicksilver (search for them in the 1st pane, or use them in actions in the 3rd pane)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</string>
 		<key>icon</key>
