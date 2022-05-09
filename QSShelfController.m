@@ -1,7 +1,6 @@
 #import "QSShelfController.h"
 
 
-
 @implementation QSShelfController
 
 + (void)initialize {
@@ -157,7 +156,7 @@
     [(QSDockingWindow *)[self window] setAutosaveName:@"ShelfWindow"];
     [[QSLib shelfNamed:@"General"] makeObjectsPerformSelector:@selector(loadIcon)];
 	
-	[[self window] addInternalWidgetsForStyleMask:NSUtilityWindowMask];    
+	[[self window] addInternalWidgetsForStyleMask:NSWindowStyleMaskUtilityWindow];
     //[[self window] addInternalWidgets];
     //[[self window] setMovableByWindowBackground:YES];
 
@@ -201,7 +200,7 @@
 - (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
         if ([[aTableColumn identifier]isEqualToString:@"Name"]){
             [aCell setRepresentedObject:[[QSLib shelfNamed:@"General"] objectAtIndex:rowIndex]];
-            [aCell setState:NSOffState];
+			[aCell setState:NSControlStateValueOff];
         }
  }
 
@@ -250,7 +249,7 @@ static NSInteger _moveRow = -1;
 
 - (void)tableView:(NSTableView *)tv dropEndedWithOperation:(NSDragOperation)operation{
 #ifdef DEBUG
-	NSLog(@"dropped withOp %d",operation);
+	NSLog(@"dropped withOp %lu",operation);
 #endif
     
     if (operation==NSDragOperationDelete || operation==NSDragOperationMove){
@@ -309,11 +308,31 @@ static NSInteger _moveRow = -1;
 // ***warning   * if ambiguous this should ask which action to use
 }
 
-- (NSMenu *)tableView:(NSTableView*)tableView menuForTableColumn:(NSTableColumn *)column row:(NSInteger)row{
-    [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-    //NSLog(@"menu");
-    return [[column dataCell] menuForObject:[[QSLib shelfNamed:@"General"] objectAtIndex:row]];
+- (void)openInInterface:(id)sender {
+	QSInterfaceController *interface = [QSReg preferredCommandInterface];
+	[interface selectObject:[[QSLib shelfNamed:@"General"] objectAtIndex:[shelfTableView selectedRow]]];
+	 [interface actionActivate:sender];
 }
+
+- (NSMenu *)tableView:(NSTableView*)tableView menuForTableColumn:(NSTableColumn *)column row:(NSInteger)row{
+	[tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+	//NSLog(@"menu");
+	NSMenu *menu = [[column dataCell] menuForObject:[[QSLib shelfNamed:@"General"] objectAtIndex:row]];
+	
+	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:11],NSFontAttributeName,nil];
+	
+	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Remove" action:@selector(deleteBackward:) keyEquivalent:@""];
+	[item setTarget:self];
+	[item setAttributedTitle:[[NSAttributedString alloc] initWithString:[item title] attributes:attrs]];
+	[menu addItem:item];
+	
+	item = [[NSMenuItem alloc] initWithTitle:@"Open in Quicksilver" action:@selector(openInInterface:) keyEquivalent:@""];
+	[item setTarget:self];
+	[item setAttributedTitle:[[NSAttributedString alloc] initWithString:[item title] attributes:attrs]];
+	[menu addItem:item];
+	return menu;
+}
+	 
 - (NSDragOperation)tableView:(NSTableView*)tableView validateDrop:(id <NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)operation{
 //      NSLog(@"validate %@",[info draggingSource]);
     if (operation==NSTableViewDropAbove)
