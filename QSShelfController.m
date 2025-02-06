@@ -288,7 +288,7 @@ static NSInteger _moveRow = -1;
         [self tableView:tableView didDepositRow:_moveRow at:MAX(row,0)];
     }
   //  id source=[info draggingSource];
-    [[QSLibrarian sharedInstance]saveShelf:@"General"];
+    [[QSLibrarian sharedInstance] saveShelf:@"General"];
     [tableView reloadData];
     return YES;
 }
